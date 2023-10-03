@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import data.DataHelper;
 import data.SQLHelper;
@@ -5,7 +6,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import page.StartPage;
 
-import static com.codeborne.selenide.Selenide.open;
+import static data.SQLHelper.clearDB;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -24,12 +25,12 @@ public class PurchaseTravelingDayTest {
 
     @BeforeEach
     void setup() {
-        open("http://localhost:8080");
-        SQLHelper.clearDB();
+        Selenide.open("http://localhost:8080");
+        clearDB();
 
     }
 
-    // Positive scenarios
+    // Positive
 
     @Test
     @Order(1)
@@ -111,7 +112,7 @@ public class PurchaseTravelingDayTest {
         assertEquals(expected, actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(5)
     @DisplayName("All fields are filled with valid data and blocked card(PaymentPage, RUS)")
     void paymentFormShouldHaveAllValidFieldBlockedCardRUS() {
@@ -131,7 +132,7 @@ public class PurchaseTravelingDayTest {
         assertEquals(expected, actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(6)
     @DisplayName("All fields are filled with valid data and blocked card(CreditPage, RUS)")
     void creditFormShouldHaveAllValidFieldBlockedCardRUS() {
@@ -151,7 +152,7 @@ public class PurchaseTravelingDayTest {
         assertEquals(expected, actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(7)
     @DisplayName("All fields are filled with valid data and blocked card(PaymentPage, ENG)")
     void paymentFormShouldHaveAllValidFieldBlockedCardENG() {
@@ -171,7 +172,7 @@ public class PurchaseTravelingDayTest {
         assertEquals(expected, actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(8)
     @DisplayName("All fields are filled with valid data and blocked card(CreditPage, ENG)")
     void creditFormShouldHaveAllValidFieldBlockedCardENG() {
@@ -192,7 +193,7 @@ public class PurchaseTravelingDayTest {
     }
 
 
-    // Negative scenarios
+    // Negative
 
     @Test
     @Order(9)
@@ -208,7 +209,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(10)
     @DisplayName("All fields are empty(CreditPage)")
     void CreditFormShouldHaveAllEmptyField() {
@@ -222,7 +223,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(11)
     @DisplayName("Number card empty,rest fields are filled with valid data(PaymentPage)")
     void paymentFormShouldHaveEmptyNumberCardRestFieldValid() {
@@ -241,7 +242,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(12)
     @DisplayName("Number card empty,rest fields are filled with valid data(CreditPage)")
     void CreditFormShouldHaveEmptyNumberCardRestFieldValid() {
@@ -259,7 +260,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(13)
     @DisplayName("Month empty,rest fields are filled with valid data(PaymentPage)")
     void paymentFormShouldHaveEmptyMonthRestFieldValid() {
@@ -278,7 +279,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(14)
     @DisplayName("Month empty,rest fields are filled with valid data(CreditPage)")
     void CreditFormShouldHaveEmptyMonthRestFieldValid() {
@@ -296,7 +297,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(15)
     @DisplayName("Year empty,rest fields are filled with valid data(PaymentPage)")
     void paymentFormShouldHaveEmptyYearRestFieldValid() {
@@ -314,7 +315,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(16)
     @DisplayName("Year empty,rest fields are filled with valid data(CreditPage)")
     void CreditFormShouldHaveEmptyYearRestFieldValid() {
@@ -369,7 +370,7 @@ public class PurchaseTravelingDayTest {
     }
 
 
-    @Test // БАГ
+    @Test // bug
     @Order(19)
     @DisplayName("CVC empty,rest fields are filled with valid data(PaymentPage)")
     void paymentFormShouldHaveEmptyCVCRestFieldValid() {
@@ -387,7 +388,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(20)
     @DisplayName("CVC empty,rest fields are filled with valid data(CreditPage)")
     void CreditFormShouldHaveEmptyCVCRestFieldValid() {
@@ -519,7 +520,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(27)
     @DisplayName("Month below range,rest fields are filled with valid data(PaymentPage)")
     void paymentFormShouldHaveMonthBelowRangeRestFieldValid() {
@@ -671,7 +672,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(35)
     @DisplayName("Only name in holder,rest fields are filled with valid data(PaymentPage, RUS)")
     void paymentFormShouldHaveOnlyNameHolderRestFieldValidRUS() {
@@ -690,7 +691,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(36)
     @DisplayName("Only name in holder,rest fields are filled with valid data(CreditPage, RUS)")
     void CreditFormShouldHaveOnlyNameHolderRestFieldValidRUS() {
@@ -709,7 +710,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(37)
     @DisplayName("Only name in holder,rest fields are filled with valid data(PaymentPage, ENG)")
     void paymentFormShouldHaveOnlyNameHolderRestFieldValidENG() {
@@ -728,7 +729,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(38)
     @DisplayName("Only name in holder,rest fields are filled with valid data(CreditPage, ENG)")
     void CreditFormShouldHaveOnlyNameHolderRestFieldValidENG() {
@@ -747,7 +748,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(39)
     @DisplayName("Only surname in holder,rest fields are filled with valid data(PaymentPage, RUS)")
     void paymentFormShouldHaveOnlySurnameHolderRestFieldValidRUS() {
@@ -766,7 +767,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(40)
     @DisplayName("Only Surname in holder,rest fields are filled with valid data(CreditPage, RUS)")
     void CreditFormShouldHaveOnlySurnameHolderRestFieldValidRUS() {
@@ -785,7 +786,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(41)
     @DisplayName("Only Surname in holder,rest fields are filled with valid data(PaymentPage, ENG)")
     void paymentFormShouldHaveOnlySurnameHolderRestFieldValidENG() {
@@ -804,7 +805,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(42)
     @DisplayName("Only Surname in holder,rest fields are filled with valid data(CreditPage, ENG)")
     void CreditFormShouldHaveOnlySurnameHolderRestFieldValidENG() {
@@ -823,7 +824,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(43)
     @DisplayName("One letter in holder,rest fields are filled with valid data(PaymentPage, RUS)")
     void paymentFormShouldHaveOneLetterHolderRestFieldValidRUS() {
@@ -842,7 +843,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(44)
     @DisplayName("One letter in holder,rest fields are filled with valid data(CreditPage, RUS)")
     void CreditFormShouldHaveOneLetterHolderRestFieldValidRUS() {
@@ -861,7 +862,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(45)
     @DisplayName("One letter in holder,rest fields are filled with valid data(PaymentPage, ENG)")
     void paymentFormShouldHaveOneLetterHolderRestFieldValidENG() {
@@ -880,7 +881,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(46)
     @DisplayName("One letter in holder,rest fields are filled with valid data(CreditPage, ENG)")
     void CreditFormShouldHaveOneLetterHolderRestFieldValidENG() {
@@ -899,7 +900,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(47)
     @DisplayName("Holder with hyphenated,rest fields are filled with valid data(PaymentPage, RUS)")
     void paymentFormShouldHaveHolderWithHyphenatedRestFieldValidRUS() {
@@ -918,7 +919,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(48)
     @DisplayName("Holder with hyphenated,rest fields are filled with valid data(CreditPage, RUS)")
     void CreditFormShouldHaveHolderWithHyphenatedRestFieldValidRUS() {
@@ -937,7 +938,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(49)
     @DisplayName("Holder with hyphenated,rest fields are filled with valid data(PaymentPage, ENG)")
     void paymentFormShouldHaveHolderWithHyphenatedRestFieldValidENG() {
@@ -956,7 +957,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(50)
     @DisplayName("Holder with hyphenated,rest fields are filled with valid data(CreditPage, ENG)")
     void CreditFormShouldHaveHolderWithHyphenatedRestFieldValidENG() {
@@ -976,7 +977,7 @@ public class PurchaseTravelingDayTest {
     }
 
 
-    @Test // БАГ
+    @Test // bug
     @Order(51)
     @DisplayName("Holder with hieroglyphs ,rest fields are filled with valid data(PaymentPage, CN)")
     void paymentFormShouldHaveHolderWithHieroglyphsRestFieldValidCN() {
@@ -995,7 +996,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(52)
     @DisplayName("Holder with hieroglyphs,rest fields are filled with valid data(CreditPage, CN)")
     void CreditFormShouldHaveHolderWithHieroglyphsRestFieldValidCN() {
@@ -1014,7 +1015,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(53)
     @DisplayName("Special symbol in holder,rest fields are filled with valid data(PaymentPage)")
     void paymentFormShouldHaveHolderWithSpecialSymbolRestFieldValid() {
@@ -1033,7 +1034,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(54)
     @DisplayName("Special symbol in holder,rest fields are filled with valid data(CreditPage)")
     void CreditFormShouldHaveHolderWithSpecialSymbolRestFieldValid() {
@@ -1052,7 +1053,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(55)
     @DisplayName("Number in holder,rest fields are filled with valid data(PaymentPage)")
     void paymentFormShouldHaveHolderWithNumberRestFieldValid() {
@@ -1071,7 +1072,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(56)
     @DisplayName("Number in holder,rest fields are filled with valid data(CreditPage)")
     void CreditFormShouldHaveHolderWithNumberRestFieldValid() {
@@ -1090,7 +1091,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(57)
     @DisplayName("Over flow holder,rest fields are filled with valid data(PaymentPage)")
     void paymentFormShouldHaveOverFlowHolderRestFieldValid() {
@@ -1109,7 +1110,7 @@ public class PurchaseTravelingDayTest {
         assertNull(actual);
     }
 
-    @Test // БАГ
+    @Test // bug
     @Order(58)
     @DisplayName("Over Flow holder,rest fields are filled with valid data(CreditPage)")
     void CreditFormShouldHaveOverFlowHolderRestFieldValid() {

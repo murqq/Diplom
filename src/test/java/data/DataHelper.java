@@ -9,7 +9,7 @@ import java.util.Locale;
 
 public class DataHelper {
 
-    // ПОЛЕ НОМЕР КАРТЫ
+    // карта
     public static cardNumber getValidWorkCard() {
         cardNumber cardNumber = new cardNumber("4444 4444 4444 4441");
         return cardNumber;
@@ -31,7 +31,7 @@ public class DataHelper {
     }
 
 
-    // ПОЛЕ МЕСЯЦ
+    // месяц
     public static String getValidMonth() {
 
         DateTimeFormatter to = DateTimeFormatter.ofPattern("MM");
@@ -56,7 +56,7 @@ public class DataHelper {
     }
 
 
-    // ПОЛЕ ГОД
+    // год
     public static String getValidYear() {
         DateTimeFormatter to = DateTimeFormatter.ofPattern("YY");
         int date = Integer.parseInt(LocalDate.now().format(to));
@@ -86,7 +86,7 @@ public class DataHelper {
     }
 
 
-    //    ПОЛЕ ВЛАДЕЛЕЦ
+    // владелец
     public static String getValidHolderRus() {
         Faker faker = new Faker(new Locale("ru"));
 
@@ -183,7 +183,7 @@ public class DataHelper {
     }
 
 
-    //    ПОЛЕ CVC/CVV
+    //  cvc/cvv
     public static String getValidCVCCode() {
         String code = String.valueOf(Math.random() * (899) + 100);
         return code;
