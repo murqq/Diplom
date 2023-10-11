@@ -13,7 +13,7 @@
 ***На скриншоте ниже представлен отчет по итогам тестирования.***
 
 ### ***Отчет Allure:***
-![AllureReport.jpg](..%2F..%2F..%2FDownloads%2FAllureReport.jpg)
+![AllureReport.jpg](https://github.com/murqq/Diplom/blob/main/documentation/Снимок%20экрана%202023-09-29%20в%2013.15.58.png)
 </details>
 
 ### ***Общие рекомендации:***
