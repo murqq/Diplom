@@ -1,9 +1,9 @@
 # Документация
-[План тестирования]()
+[План тестирования](https://github.com/murqq/Diplom/blob/main/documentation/Plan.md)
 
-[Отёт по итогам тестирования]()
+[Отёт по итогам тестирования](https://github.com/murqq/Diplom/blob/main/documentation/Report.md)
 
-[Отчёт по итогам автоматизации](h)
+[Отчёт по итогам автоматизации](https://github.com/murqq/Diplom/blob/main/documentation/Summary.md)
 
 # Задача:
 
